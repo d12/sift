@@ -8,6 +8,11 @@ on:
         required: true
         type: string
 
+  # Run on every push to main (temporary — remove once CI is stable)
+  push:
+    branches:
+      - main
+
   # Also allow manual runs for testing
   workflow_dispatch:
     inputs:
@@ -134,12 +139,17 @@ jobs:
       # ── Package as DMG ────────────────────────────────────────────────────────
       - name: Create DMG
         run: |
+          TAG="${{ inputs.tag }}"
+          # Fall back to short SHA when triggered directly by a push
+          LABEL="${TAG:-${{ github.sha }}}"
+          LABEL="${LABEL:0:7}"
           hdiutil create \
             -volname "Sift" \
             -srcfolder "$RUNNER_TEMP/export/Sift.app" \
             -ov \
             -format UDZO \
-            "$RUNNER_TEMP/Sift-${{ inputs.tag }}.dmg"
+            "$RUNNER_TEMP/Sift-${LABEL}.dmg"
+          echo "DMG_LABEL=${LABEL}" >> "$GITHUB_ENV"
 
       # ── Upload to GitHub Release ──────────────────────────────────────────────
       - name: Upload DMG to release
@@ -147,4 +157,4 @@ jobs:
         with:
           tag_name: ${{ inputs.tag }}
           files: |
-            ${{ runner.temp }}/Sift-${{ inputs.tag }}.dmg
+            ${{ runner.temp }}/Sift-${{ env.DMG_LABEL }}.dmg
