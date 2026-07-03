@@ -1,0 +1,50 @@
+name: Sift
+options:
+  bundleIdPrefix: com.sift
+  deploymentTarget:
+    macOS: "15.0"
+  xcodeVersion: "16.0"
+  createIntermediateGroups: true
+  groupSortPosition: top
+  defaultConfig: Debug
+
+packages:
+  KeyboardShortcuts:
+    url: https://github.com/sindresorhus/KeyboardShortcuts
+    from: "2.2.0"
+  GRDB:
+    url: https://github.com/groue/GRDB.swift
+    from: "6.29.0"
+
+targets:
+  Sift:
+    type: application
+    platform: macOS
+    sources:
+      - path: Sift
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.sift.app
+        MARKETING_VERSION: 0.1.0
+        CURRENT_PROJECT_VERSION: 1
+        INFOPLIST_FILE: Sift/Info.plist
+        CODE_SIGN_ENTITLEMENTS: Sift/Sift.entitlements
+        SWIFT_VERSION: "6.0"
+        MACOSX_DEPLOYMENT_TARGET: "15.0"
+        ENABLE_HARDENED_RUNTIME: YES
+        # Set CODE_SIGN_IDENTITY and DEVELOPMENT_TEAM in local.xcconfig (not committed)
+        CODE_SIGN_STYLE: Manual
+        CODE_SIGN_IDENTITY: "Developer ID Application"
+        SWIFT_STRICT_CONCURRENCY: complete
+      configs:
+        Debug:
+          CODE_SIGN_IDENTITY: "-"
+          CODE_SIGN_STYLE: Automatic
+        Release:
+          CODE_SIGN_IDENTITY: "Developer ID Application"
+          CODE_SIGN_STYLE: Manual
+    dependencies:
+      - package: KeyboardShortcuts
+      - package: GRDB
+    scheme:
+      gatherCoverageData: false

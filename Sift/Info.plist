@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>CFBundleDisplayName</key>
+    <string>Sift</string>
+    <key>CFBundleExecutable</key>
+    <string>$(EXECUTABLE_NAME)</string>
+    <key>CFBundleIconFile</key>
+    <string>AppIcon</string>
+    <key>CFBundleIdentifier</key>
+    <string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+    <key>CFBundleInfoDictionaryVersion</key>
+    <string>6.0</string>
+    <key>CFBundleName</key>
+    <string>Sift</string>
+    <key>CFBundlePackageType</key>
+    <string>APPL</string>
+    <key>CFBundleShortVersionString</key>
+    <string>$(MARKETING_VERSION)</string>
+    <key>CFBundleVersion</key>
+    <string>$(CURRENT_PROJECT_VERSION)</string>
+    <key>LSApplicationCategoryType</key>
+    <string>public.app-category.productivity</string>
+    <key>LSMinimumSystemVersion</key>
+    <string>$(MACOSX_DEPLOYMENT_TARGET)</string>
+    <!-- Agent app – no Dock icon; lives in the menu bar -->
+    <key>LSUIElement</key>
+    <true/>
+    <!-- Do not restore windows (e.g. Settings) from the previous session. -->
+    <key>NSQuitAlwaysKeepsWindows</key>
+    <false/>
+    <key>NSHighResolutionCapable</key>
+    <true/>
+    <key>NSPrincipalClass</key>
+    <string>NSApplication</string>
+    <key>NSHumanReadableCopyright</key>
+    <string>Copyright © 2025 Sift contributors. MIT License.</string>
+    <!-- File system access descriptions (TCC) -->
+    <key>NSDesktopFolderUsageDescription</key>
+    <string>Sift indexes files on your Desktop so you can search for them quickly.</string>
+    <key>NSDocumentsFolderUsageDescription</key>
+    <string>Sift indexes files in your Documents folder so you can search for them quickly.</string>
+    <key>NSDownloadsFolderUsageDescription</key>
+    <string>Sift indexes files in your Downloads folder so you can search for them quickly.</string>
+    <key>NSRemovableVolumesUsageDescription</key>
+    <string>Sift can index files on external drives if you add them as indexed directories.</string>
+</dict>
+</plist>

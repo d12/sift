@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <!--
+        Hardened runtime is required for notarization.
+        Sift is NOT sandboxed so it can access user-configured directories freely.
+    -->
+    <key>com.apple.security.app-sandbox</key>
+    <false/>
+
+    <!--
+        Allow JIT – not needed, but present here as a reminder to keep false
+        unless a dependency requires it.
+    -->
+    <key>com.apple.security.cs.allow-jit</key>
+    <false/>
+</dict>
+</plist>

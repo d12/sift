@@ -1,0 +1,22 @@
+# User requirements
+
+- The application is installable on modern MacOS versions.
+- The application allows users to press command-space to open a search bar in the middle of the screen, regardless of the current focused application.
+- The searchbar allows users to type in a search query and returns results from the indexed files on the system.
+- The user can use arrow keys to navigate the results, and either hit enter or click a result to open it. Escape will close the dialog.
+- Allow filetype prefixes to filter results. For example, typing "pdf: myfile" will only return results that are PDFs. app: returns applications, etc.
+- An appropriate image should go with the result. Applications must show the application icon image.
+- There must be a settings UI that allows users to configure indexing behaviour.
+  - By default, nothing is indexed
+  - Users can add directories to index. There is a number of settings per directory that can be configured:
+    - Whether to recursively index the directory or not (false by default)
+    - What file types to index (all by default)
+    - Whether to index hidden files or not (false by default)
+  - If the user tries to save a indexing rule (directory) that would index a large number of files (over 1k), warn the user.
+- Indexing is done in the background and must not overly tax system resources like Spotlight does (sometimes I find my CPU pegged by a dozen spotlight processes).
+- Use file watchers to re-index dirs when they are changed.
+- Have built-in ways to surface when a directory is causing excessive re-indexing and is taxing the system.
+- The UI should be modern and clean. Ideally we align with Spotlight design.
+- The application will be open source and on GitHub
+- I have a Apple developer account and will sign the applications for distribution in GitHub releases.
+- Use release-please for release management. Use GitHub Actions to build the release artifacts if possible.
